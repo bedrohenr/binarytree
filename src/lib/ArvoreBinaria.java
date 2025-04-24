@@ -20,9 +20,32 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         comparador = comp;
     }
     
+    // https://elemarjr.com/clube-de-estudos/artigos/introducao-a-arvore-binaria-conceitos-terminologias-e-implementacao/
     @Override
     public void adicionar(T novoValor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        No novoNo = new No(novoValor);
+        if(raiz == null){
+            raiz = novoNo;
+        } else {
+            No noAtual = raiz;
+            while(true){
+                if(novoValor < noAtual.getValor()){
+                    if(noAtual.getFilhoEsquerda() == null) {
+                        noAtual.setFilhoEsquerda(novoValor);
+                        break;
+                    }
+                    noAtual = noAtual.getFilhoEsquerda();
+                } else {
+                    if(noAtual.getFilhoDireita() == null) {
+                        noAtual.setFilhoDireita(novoValor);
+                        break;
+                    }
+                    noAtual = noAtual.getFilhoDireita();
+                }
+                
+            }
+             
+        }
     }
 
     @Override
