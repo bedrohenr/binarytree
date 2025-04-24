@@ -24,25 +24,26 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     @Override
     public void adicionar(T novoValor) {
         No novoNo = new No(novoValor);
+
         if(raiz == null){
             raiz = novoNo;
         } else {
             No noAtual = raiz;
             while(true){
-                if(novoValor < noAtual.getValor()){
+                T noAtualValor = (T) noAtual.getValor();
+                if(this.comparador.compare(novoValor, noAtualValor) == 1){
                     if(noAtual.getFilhoEsquerda() == null) {
-                        noAtual.setFilhoEsquerda(novoValor);
+                        noAtual.setFilhoEsquerda(novoNo);
                         break;
                     }
                     noAtual = noAtual.getFilhoEsquerda();
                 } else {
                     if(noAtual.getFilhoDireita() == null) {
-                        noAtual.setFilhoDireita(novoValor);
+                        noAtual.setFilhoDireita(novoNo);
                         break;
                     }
                     noAtual = noAtual.getFilhoDireita();
                 }
-                
             }
              
         }
