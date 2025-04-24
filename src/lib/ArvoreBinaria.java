@@ -24,37 +24,32 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     @Override
     public void adicionar(T novoValor) {
         if(this.raiz == null){
-            No<T> novoNo = new No<T>(novoValor);
-            this.raiz = novoNo;
+            this.raiz = new No<T>(novoValor);
         }
 
-        this.addNo(this.raiz, novoValor);
+        this.raiz = this.addRecursivo(this.raiz, novoValor);
     }
 
-    private No<T> addNo(No<T> noAtual, T valor){
+    private No<T> addRecursivo(No<T> noAtual, T valor){
 
         if(noAtual == null){
             No<T> novoNo = new No<T>(valor);
-            noAtual = novoNo;
+            // noAtual = novoNo;
             // System.out.println("TESTE NO: " + noAtual.getValor());
-            return noAtual;
+            return novoNo;
         }
 
+        int compare = this.comparador.compare(noAtual.getValor(), valor);
+
         // valor menor -> insere a esquerda
-        if(
-            noAtual.getFilhoEsquerda() == null || 
-            this.comparador.compare(
-                noAtual.getFilhoEsquerda().getValor(), valor) == 1){
+        if( compare < 0) {
             System.out.println("FLAG LEFT");
-            noAtual.setFilhoEsquerda(addNo(noAtual.getFilhoEsquerda(), valor));
+            noAtual.setFilhoEsquerda(addRecursivo(noAtual.getFilhoEsquerda(), valor));
         }
         // valor maior -> insere a direita
-        else if (
-            noAtual.getFilhoDireita() == null || 
-            this.comparador.compare(
-                noAtual.getFilhoDireita().getValor(), valor) == 1){
+        else if ( compare > 0) {
             System.out.println("FLAG RIGHT");
-            noAtual.setFilhoDireita(addNo(noAtual.getFilhoDireita(), valor));
+            noAtual.setFilhoDireita(addRecursivo(noAtual.getFilhoDireita(), valor));
         }
 
         return noAtual;
