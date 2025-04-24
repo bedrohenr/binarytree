@@ -70,7 +70,21 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
    @Override
     public T pesquisar(T valor, Comparator comparador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        No noAtual = raiz;
+        while(true){
+            T noAtualValor = (T) noAtual.getValor();
+            if(comparador.compare(valor, noAtualValor) == 1){
+                if(noAtual.getFilhoEsquerda() == null) {
+                    return (T) noAtual.getFilhoEsquerda().getValor();
+                }
+                noAtual = noAtual.getFilhoEsquerda();
+            } else {
+                if(noAtual.getFilhoDireita() == null) {
+                    return (T) noAtual.getFilhoDireita().getValor();
+                }
+                noAtual = noAtual.getFilhoDireita();
+            }
+        }
     }
 
     @Override
