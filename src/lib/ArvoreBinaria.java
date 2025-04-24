@@ -44,17 +44,17 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public T pesquisar(T valor) {
-        No noAtual = raiz;
+        No<T> noAtual = raiz;
         while(true){
-            T noAtualValor = (T) noAtual.getValor();
+            T noAtualValor = noAtual.getValor();
             if(this.comparador.compare(valor, noAtualValor) == 1){
                 if(noAtual.getFilhoEsquerda() == null) {
-                    return (T) noAtual.getFilhoEsquerda().getValor();
+                    return noAtual.getFilhoEsquerda().getValor();
                 }
                 noAtual = noAtual.getFilhoEsquerda();
             } else {
                 if(noAtual.getFilhoDireita() == null) {
-                    return (T) noAtual.getFilhoDireita().getValor();
+                    return noAtual.getFilhoDireita().getValor();
                 }
                 noAtual = noAtual.getFilhoDireita();
             }
