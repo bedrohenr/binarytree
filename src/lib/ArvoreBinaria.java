@@ -103,7 +103,16 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     
     @Override
     public String caminharEmOrdem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
+        System.out.println("Init caminhar em ordem");
+        this.emOrdem(this.raiz);
+        return "";
     }
-        
+
+    private void emOrdem(No<T> noAtual){
+        if(noAtual != null){
+            emOrdem(noAtual.getFilhoEsquerda());
+            System.out.println(noAtual.getValor() + " ");
+            emOrdem(noAtual.getFilhoDireita());
+        }
+    }
 }
