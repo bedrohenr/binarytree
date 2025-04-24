@@ -23,20 +23,38 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     // https://elemarjr.com/clube-de-estudos/artigos/introducao-a-arvore-binaria-conceitos-terminologias-e-implementacao/
     @Override
     public void adicionar(T novoValor) {
+        if(this.raiz == null){
+            No<T> novoNo = new No<T>(novoValor);
+            this.raiz = novoNo;
+        }
+
         this.addNo(this.raiz, novoValor);
     }
 
-    private No addNo(No<T> noAtual, T valor){
+    private No<T> addNo(No<T> noAtual, T valor){
+
         if(noAtual == null){
-            noAtual = new No(valor);
+            No<T> novoNo = new No<T>(valor);
+            noAtual = novoNo;
+            // System.out.println("TESTE NO: " + noAtual.getValor());
             return noAtual;
         }
 
         // valor menor -> insere a esquerda
-        if(this.comparador.compare(noAtual.getFilhoEsquerda().getValor(), valor) == 1){
+        if(
+            noAtual.getFilhoEsquerda() == null || 
+            this.comparador.compare(
+                noAtual.getFilhoEsquerda().getValor(), valor) == 1){
+            System.out.println("FLAG LEFT");
             noAtual.setFilhoEsquerda(addNo(noAtual.getFilhoEsquerda(), valor));
-        } else if (this.comparador.compare(noAtual.getFilhoDireita().getValor(), valor) == 1){
-            noAtual.setFilhoDireita(addNo(noAtual.getFilhoDireita(), valor))
+        }
+        // valor maior -> insere a direita
+        else if (
+            noAtual.getFilhoDireita() == null || 
+            this.comparador.compare(
+                noAtual.getFilhoDireita().getValor(), valor) == 1){
+            System.out.println("FLAG RIGHT");
+            noAtual.setFilhoDireita(addNo(noAtual.getFilhoDireita(), valor));
         }
 
         return noAtual;
