@@ -23,30 +23,23 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     // https://elemarjr.com/clube-de-estudos/artigos/introducao-a-arvore-binaria-conceitos-terminologias-e-implementacao/
     @Override
     public void adicionar(T novoValor) {
-        No novoNo = new No(novoValor);
+        this.addNo(this.raiz, novoValor);
+    }
 
-        if(raiz == null){
-            raiz = novoNo;
-        } else {
-            No noAtual = raiz;
-            while(true){
-                T noAtualValor = (T) noAtual.getValor();
-                if(this.comparador.compare(novoValor, noAtualValor) == 1){
-                    if(noAtual.getFilhoEsquerda() == null) {
-                        noAtual.setFilhoEsquerda(novoNo);
-                        break;
-                    }
-                    noAtual = noAtual.getFilhoEsquerda();
-                } else {
-                    if(noAtual.getFilhoDireita() == null) {
-                        noAtual.setFilhoDireita(novoNo);
-                        break;
-                    }
-                    noAtual = noAtual.getFilhoDireita();
-                }
-            }
-             
+    private No addNo(No<T> noAtual, T valor){
+        if(noAtual == null){
+            noAtual = new No(valor);
+            return noAtual;
         }
+
+        // valor menor -> insere a esquerda
+        if(this.comparador.compare(noAtual.getFilhoEsquerda().getValor(), valor) == 1){
+            noAtual.setFilhoEsquerda(addNo(noAtual.getFilhoEsquerda(), valor));
+        } else if (this.comparador.compare(noAtual.getFilhoDireita().getValor(), valor) == 1){
+            noAtual.setFilhoDireita(addNo(noAtual.getFilhoDireita(), valor))
+        }
+
+        return noAtual;
     }
 
     @Override
