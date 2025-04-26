@@ -17,5 +17,6 @@ public class Main {
         tree.caminharEmOrdem();
         System.out.println("--");
         System.out.println("Pesquisar: " + tree.pesquisar(6));
+        System.out.println("Pesquisar: " + tree.pesquisar(3));
     }
 }
