@@ -14,12 +14,8 @@ public class Main {
         tree.adicionar(2);
         tree.adicionar(3);
 
-        // No<Integer> raiz = tree.getRaiz();
-
-        // System.out.println("Raiz: " + raiz.getValor());
-        // System.out.println("Esq: " + raiz.getFilhoDireita().getValor());
-        // System.out.println("Dir: " + raiz.getFilhoEsquerda().getValor());
-
         tree.caminharEmOrdem();
+        System.out.println("--");
+        System.out.println("Pesquisar: " + tree.pesquisar(6));
     }
 }
