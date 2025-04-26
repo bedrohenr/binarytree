@@ -66,7 +66,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
                 return pesquisarRecursivo(valor, noAtual.getFilhoDireita(), comparador);
             else
                 return noAtual.getValor();
-            }
+        }
         return null;
     }
 
