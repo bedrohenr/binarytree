@@ -57,6 +57,9 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public T pesquisar(T valor) {
+        return this.pesquisarRecursivo(valor, raiz, comparador);
+    }
+
     private T pesquisarRecursivo(T valor, No<T> noAtual, Comparator<T> comparador){
         if(noAtual != null){
             
