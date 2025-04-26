@@ -82,6 +82,34 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private T removerRecursivo(T valor, No<T> noAtual){
+        if(noAtual != null){
+            
+            int compare = this.comparador.compare(noAtual.getValor(), valor);
+            // System.out.println("Compare: " + valor + "  - " + noAtual.getValor() +" = " + compare );
+            if(compare < 0 )
+                return removerRecursivo(valor, noAtual.getFilhoEsquerda());
+            else if(compare > 0)
+                return removerRecursivo(valor, noAtual.getFilhoDireita());
+            else{
+                No<T> aux = null;
+                if(noAtual.getFilhoDireita() != null){
+                    noAtual.setValor(valor); noAtual.getFilhoDireita();
+                    // set valor = right leaf
+                    // right leaf = null?
+                } else if (noAtual.getFilhoEsquerda() != null){
+                    // set valor noAtual = left leaf
+                    // left leaf = null?
+                }
+                
+
+                        
+            }
+
+        }
+        return null;
+    }
+
     @Override
     public int altura() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
