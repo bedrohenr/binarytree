@@ -33,22 +33,17 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     private No<T> addRecursivo(No<T> noAtual, T valor){
 
         if(noAtual == null){
-            No<T> novoNo = new No<T>(valor);
-            // noAtual = novoNo;
-            // System.out.println("TESTE NO: " + noAtual.getValor());
-            return novoNo;
+            return new No<T>(valor);
         }
 
         int compare = this.comparador.compare(noAtual.getValor(), valor);
 
         // valor menor -> insere a esquerda
         if( compare < 0) {
-            System.out.println("FLAG LEFT");
             noAtual.setFilhoEsquerda(addRecursivo(noAtual.getFilhoEsquerda(), valor));
         }
         // valor maior -> insere a direita
         else if ( compare > 0) {
-            System.out.println("FLAG RIGHT");
             noAtual.setFilhoDireita(addRecursivo(noAtual.getFilhoDireita(), valor));
         }
 
@@ -64,7 +59,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         if(noAtual != null){
             
             int compare = this.comparador.compare(noAtual.getValor(), valor);
-            System.out.println("Compare: " + valor + "  - " + noAtual.getValor() +" = " + compare );
+            // System.out.println("Compare: " + valor + "  - " + noAtual.getValor() +" = " + compare );
             if(compare < 0 )
                 return pesquisarRecursivo(valor, noAtual.getFilhoEsquerda(), comparador);
             else if(compare > 0)
@@ -117,7 +112,6 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     
     @Override
     public String caminharEmOrdem() {
-        System.out.println("Init caminhar em ordem");
         this.emOrdem(this.raiz);
         return "";
     }
