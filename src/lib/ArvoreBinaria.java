@@ -125,9 +125,19 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public int altura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return alturaRecursivo(this.raiz);
     }
-       
+
+    private int alturaRecursivo(No<T> noAtual) {
+        if (noAtual == null) {
+            return -1; // Árvore vazia
+        }
+        int alturaEsquerda = alturaRecursivo(noAtual.getFilhoEsquerda());
+        int alturaDireita = alturaRecursivo(noAtual.getFilhoDireita());
+
+        return Math.max(alturaEsquerda, alturaDireita) + 1;
+    }
+
     
     @Override
     public int quantidadeNos() {
