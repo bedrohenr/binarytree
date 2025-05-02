@@ -79,7 +79,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public T remover(T valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return removerRecursivo(valor, this.raiz);
     }
 
     private T removerRecursivo(T valor, No<T> noAtual){
@@ -94,15 +94,28 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
             else{
                 No<T> aux = null;
                 if(noAtual.getFilhoDireita() != null){
-                    noAtual.setValor(valor); noAtual.getFilhoDireita();
-                    // set valor = right leaf
-                    // right leaf = null?
+                    noAtual.setValor(noAtual.getFilhoDireita().getValor());
+
+                    // Verifica se pode adquirir a folha da direita ou esquerda
+                    if(noAtual.getFilhoDireita().getFilhoDireita() != null){
+                        aux = noAtual.getFilhoDireita().getFilhoDireita();
+                    } else if(noAtual.getFilhoDireita().getFilhoEsquerda() != null){
+                        aux = noAtual.getFilhoEsquerda().getFilhoEsquerda();
+                    }
+                    noAtual.setFilhoDireita(aux);
+                    
                 } else if (noAtual.getFilhoEsquerda() != null){
-                    // set valor noAtual = left leaf
-                    // left leaf = null?
+                    noAtual.setValor(noAtual.getFilhoEsquerda().getValor());
+
+                    if(noAtual.getFilhoEsquerda().getFilhoDireita() != null){
+                        aux = noAtual.getFilhoDireita().getFilhoDireita();
+                    } else if(noAtual.getFilhoEsquerda().getFilhoEsquerda() != null){
+                        aux = noAtual.getFilhoEsquerda().getFilhoEsquerda();
+                    }
+                    noAtual.setFilhoEsquerda(aux);
                 }
                 
-
+                return valor;
                         
             }
 
