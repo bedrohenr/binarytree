@@ -24,6 +24,6 @@ public class Main {
         // System.out.println("Pesquisar: " + tree.pesquisar(6));
         // System.out.println("Remover: " + tree.remover(5));
 
-        System.out.println("Altura: " + tree.altura());
+        System.out.println("Quantidade de nos: " + tree.quantidadeNos());
     }
 }

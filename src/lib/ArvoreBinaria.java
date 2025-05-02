@@ -141,7 +141,17 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     
     @Override
     public int quantidadeNos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return qtdNoRecursivo(this.raiz);
+    }
+
+    private int qtdNoRecursivo(No<T> noAtual) {
+        if (noAtual == null) {
+            return 0; // Árvore vazia
+        }
+        int alturaEsquerda = qtdNoRecursivo(noAtual.getFilhoEsquerda());
+        int alturaDireita = qtdNoRecursivo(noAtual.getFilhoDireita());
+
+        return alturaEsquerda + alturaDireita + 1;
     }
 
     @Override
