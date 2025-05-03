@@ -156,7 +156,33 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public String caminharEmNivel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
+        int altura = this.altura();
+
+        String output = "";
+
+        // Percorre por cada nivel até a altura (nivel maximo)
+        for (int nivel = 0; nivel <= altura; nivel++) {
+            output += imprimeNivel(raiz, nivel);
+        }
+
+        return output;
+    }
+    
+    // Método auxiliar para imprimir nós de um nível específico
+    private String imprimeNivel(No<T> noAtual, int nivel) {
+        if (noAtual == null) {
+            return "";
+        }
+        if (nivel == 0) {
+           return noAtual.getValor() + " ";
+        } else {
+            String output = "";
+            // Porque assim funciona?
+            output += imprimeNivel(noAtual.getFilhoDireita(), nivel - 1);
+            output += imprimeNivel(noAtual.getFilhoEsquerda(), nivel - 1);
+            return output;
+        }
+
     }
 
     @Override
