@@ -1,28 +1,34 @@
+import appCaixaMercado.ComparadorProdutoPorCodigo;
+import appCaixaMercado.ComparadorProdutoPorNome;
+import appCaixaMercado.Produto;
 import lib.ArvoreBinaria;
-import lib.ComparadorInteiro;
 
 public class Main {
     public static void main(String[] args){
-        ComparadorInteiro comp = new ComparadorInteiro();
-        ArvoreBinaria<Integer> tree = new ArvoreBinaria<>(comp);
+        ComparadorProdutoPorCodigo comparadorProdutoCodigo = new ComparadorProdutoPorCodigo();
+        ComparadorProdutoPorNome comparadorProdutoNome = new ComparadorProdutoPorNome();
 
-        tree.adicionar(5);
-        tree.adicionar(7);
-        tree.adicionar(3);
-        tree.adicionar(10);
-        tree.adicionar(6);
-        tree.adicionar(9);
-        tree.adicionar(4);
-        tree.adicionar(1);
-        tree.adicionar(2);
-        tree.adicionar(8);
+        ArvoreBinaria<Produto> arvoreBinaria = new ArvoreBinaria<>(comparadorProdutoCodigo);
 
-        // tree.caminharEmOrdem();
-        // System.out.println("Pesquisar: " + tree.pesquisar(6));
-        // System.out.println("Remover: " + tree.remover(5));
+        Produto notebook = new Produto(12313, "Notebook", 3500.00f);
+        Produto phone = new Produto(15442, "Smartphone", 1999.90f);
+        Produto tablet = new Produto(11332, "Tablet", 1200.50f);
+        Produto foneOuvido = new Produto(10224, "Fone Bluetooth", 299.90f);
+        Produto mouse = new Produto(14332, "Mouse Gamer", 250.00f);
 
-        // System.out.println("Quantidade de nos: " + tree.quantidadeNos());
-        System.out.println("Em ordem: " + tree.caminharEmOrdem());
-        System.out.println("Em nivel: " + tree.caminharEmNivel());
+        arvoreBinaria.adicionar(mouse);
+        arvoreBinaria.adicionar(notebook);
+        arvoreBinaria.adicionar(tablet);
+        arvoreBinaria.adicionar(phone);
+        arvoreBinaria.adicionar(foneOuvido);
+
+        arvoreBinaria.caminharEmOrdem();
+        System.out.println();
+        System.out.println("Pesquisar: " + arvoreBinaria.pesquisar(tablet));
+        System.out.println("Pesquisar por Nome: " + arvoreBinaria.pesquisar(mouse, comparadorProdutoNome));
+        System.out.println();
+        System.out.println("Quantidade de nos: " + arvoreBinaria.quantidadeNos());
+        System.out.println();
+        System.out.println("Em nivel: " + arvoreBinaria.caminharEmNivel());
     }
 }
