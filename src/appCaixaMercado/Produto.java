@@ -34,4 +34,9 @@ public class Produto {
     public void setPreco(float preco) {
         this.preco = preco;
     }
+
+    public String toString() {
+        return String.format("Produto [Código: %d, Nome: %s, Preço: R$%.2f]", 
+                           codigo, nome, preco);
+    }
 }
