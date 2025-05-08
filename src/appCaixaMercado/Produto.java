@@ -1,4 +1,4 @@
-package app;
+package appCaixaMercado;
 
 public class Produto {
     private int codigo;
