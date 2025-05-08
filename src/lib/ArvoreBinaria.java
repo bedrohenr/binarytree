@@ -65,7 +65,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     private T pesquisarRecursivo(T valor, No<T> noAtual, Comparator<T> comparador){
         if(noAtual != null){
             
-            int compare = this.comparador.compare(noAtual.getValor(), valor);
+            int compare = comparador.compare(noAtual.getValor(), valor);
             // System.out.println("Compare: " + valor + "  - " + noAtual.getValor() +" = " + compare );
             if(compare < 0 )
                 return pesquisarRecursivo(valor, noAtual.getFilhoEsquerda(), comparador);
