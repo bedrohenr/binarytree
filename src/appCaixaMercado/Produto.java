@@ -3,9 +3,9 @@ package appCaixaMercado;
 public class Produto {
     private int codigo;
     private String nome;
-    private float preco;
+    private double preco;
 
-    public Produto(int codigo, String nome, float preco) {
+    public Produto(int codigo, String nome, double preco) {
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
@@ -19,7 +19,7 @@ public class Produto {
         return nome;
     }
 
-    public float getPreco() {
+    public double getPreco() {
         return preco;
     }
 
@@ -36,7 +36,6 @@ public class Produto {
     }
 
     public String toString() {
-        return String.format("Produto [Código: %d, Nome: %s, Preço: R$%.2f]", 
-                           codigo, nome, preco);
+        return String.format("[ Nome do produto: %s, Código: %d, Preço: R$%.2f ]", nome, codigo, preco);
     }
 }
