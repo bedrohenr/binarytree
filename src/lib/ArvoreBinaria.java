@@ -194,7 +194,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         String output = "";
         if(noAtual != null){
             output += emOrdem(noAtual.getFilhoEsquerda());
-            output += noAtual.getValor() + " ";
+            output += noAtual.getValor() + "\n";
             output += emOrdem(noAtual.getFilhoDireita());
         }
 
