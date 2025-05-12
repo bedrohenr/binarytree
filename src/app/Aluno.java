@@ -34,5 +34,7 @@ public class Aluno  {
         this.nome = nome;
     }
 
-
+    public String toString() {
+        return String.format("[ Nome do aluno: %s, Matricula: %d ]", this.nome, this.matricula);
+    }
 }
