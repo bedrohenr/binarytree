@@ -36,6 +36,7 @@ public class Produto {
     }
 
     public String toString() {
-        return String.format("[ Nome do produto: %s, Código: %d, Preço: R$%.2f ]", nome, codigo, preco);
+        // return String.format("[Produto: %s, Cód: %d, R$%.2f]", nome, codigo, preco);
+        return String.format("[Produto %d: %s, R$%.2f]", codigo, nome, preco);
     }
 }
