@@ -15,4 +15,9 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         }
         return no.getAltura();
     }
+    private void atualizaAltura(No<T> no) {
+        int altura = 1 + Math.max(this.getAltura(no.getFilhoEsquerda()), this.getAltura(no.getFilhoDireita()));
+
+        no.setAltura(altura);
+    }
 }
