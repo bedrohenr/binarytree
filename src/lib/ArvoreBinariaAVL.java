@@ -20,4 +20,14 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
 
         no.setAltura(altura);
     }
+
+    private int calcularBalanceamento(No<T> no) {
+        if (no == null) {
+            return 0;
+        } else {
+            return this.getAltura(no.getFilhoEsquerda()) - this.getAltura(no.getFilhoDireita());
+        }
+        
+    }
+
 }
