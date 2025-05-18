@@ -9,6 +9,45 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
     }
     
     //Implementar métodos para efetuar o balanceamento e sobrescrever método de adicionar elemento...
+    @Override
+    public void adicionar(T novoValor) {
+        if(this.raiz == null){
+            this.raiz = new No<T>(novoValor);
+        }
+
+        this.raiz = this.addRecursivo(this.raiz, novoValor);
+    }
+
+    private No<T> addRecursivo(No<T> noAtual, T valor){
+
+        if(noAtual == null){
+            return new No<T>(valor);
+        }
+
+        int compare = this.comparador.compare(noAtual.getValor(), valor);
+
+        // valor menor -> insere a esquerda
+        if( compare < 0) {
+            noAtual.setFilhoEsquerda(addRecursivo(noAtual.getFilhoEsquerda(), valor));
+        }
+        // valor maior -> insere a direita
+        else if ( compare > 0) {
+            noAtual.setFilhoDireita(addRecursivo(noAtual.getFilhoDireita(), valor));
+        }
+
+        // Atualiza a altura do nó atual
+        this.atualizaAltura(noAtual);
+
+        // Verifica os nós que necessitam de balanceamento
+        No<T> noRetorno = rotacoes(noAtual, compare);
+
+        if(noRetorno != null) {
+            return noRetorno;
+        }
+
+        return noAtual;
+    }
+
     public No<T> rotacoes(No<T> noAtual, int compare) {
         // Verifica o balanceamento do nó atual
         int balanceamento = this.calcularBalanceamento(noAtual);
