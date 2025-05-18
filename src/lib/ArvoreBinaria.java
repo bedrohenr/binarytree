@@ -59,7 +59,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
     // Necessário mudar na interface para Comparator<T> para remover o typecast 
    @Override
     public T pesquisar(T valor, Comparator comparador) {
-        return (T) this.pesquisarRecursivo(valor, this.raiz, comparador);
+        return (T) this.pesquisarRecursivoEmOrdem(valor, this.raiz, comparador);
     }
 
     private T pesquisarRecursivo(T valor, No<T> noAtual, Comparator<T> comparador){
@@ -73,6 +73,25 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
                 return pesquisarRecursivo(valor, noAtual.getFilhoDireita(), comparador);
             else
                 return noAtual.getValor();
+        }
+        return null;
+    }
+
+    private T pesquisarRecursivoEmOrdem(T valor, No<T> noAtual, Comparator<T> comparador){
+        if(noAtual != null){
+           
+            T retorno;
+
+            retorno = pesquisarRecursivoEmOrdem(valor, noAtual.getFilhoEsquerda(), comparador);
+            if(retorno != null)
+                return retorno;
+            
+            if(comparador.compare(noAtual.getValor(), valor) == 0)
+                return noAtual.getValor();
+            
+            retorno = pesquisarRecursivoEmOrdem(valor, noAtual.getFilhoDireita(), comparador);
+            if(retorno != null)
+                return retorno;
         }
         return null;
     }
