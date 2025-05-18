@@ -12,6 +12,7 @@ package lib;
 public class No<T> {
     
     private T valor;
+    int altura;
     private No<T> filhoDireita;
     private No<T> filhoEsquerda;
 
@@ -64,5 +65,13 @@ public class No<T> {
         this.filhoEsquerda = filhoEsquerda;
     }
     
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+
     
 }
