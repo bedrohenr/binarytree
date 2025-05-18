@@ -9,12 +9,36 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
     }
     
     //Implementar métodos para efetuar o balanceamento e sobrescrever método de adicionar elemento...
+    public No<T> rotacoes(No<T> noAtual, int compare) {
+        // Verifica o balanceamento do nó atual
+        int balanceamento = this.calcularBalanceamento(noAtual);
+
+        // Se o nó estiver desbalanceado, verifica qual tipo de rotação deve ser feita
+        if (balanceamento > 1 && compare < 0) {
+            return this.rotacaoDireita(noAtual);
+        }
+        if (balanceamento < -1 && compare > 0) {
+            return this.rotacaoEsquerda(noAtual);
+        }
+        if (balanceamento > 1 && compare > 0) {
+            noAtual.setFilhoEsquerda(rotacaoEsquerda(noAtual.getFilhoEsquerda()));
+            return this.rotacaoDireita(noAtual);
+        }
+        if (balanceamento < -1 && compare < 0) {
+            noAtual.setFilhoDireita(rotacaoDireita(noAtual.getFilhoDireita()));
+            return this.rotacaoEsquerda(noAtual);
+        }
+
+        return noAtual;
+    }
+
     private int getAltura(No<T> no) {
         if(no == null) {
             return 0;
         }
         return no.getAltura();
     }
+
     private void atualizaAltura(No<T> no) {
         int altura = 1 + Math.max(this.getAltura(no.getFilhoEsquerda()), this.getAltura(no.getFilhoDireita()));
 
