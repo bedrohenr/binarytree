@@ -13,6 +13,15 @@ public class Main {
 
         ArvoreBinaria<Produto> arvoreBinaria = new ArvoreBinaria<>(comparadorProdutoCodigo);
 
+        arvoreBinaria.adicionar(new Produto(4, "uva", 10.0));
+        arvoreBinaria.adicionar(new Produto(2, "banana", 10.0));
+        arvoreBinaria.adicionar(new Produto(3, "abacate", 10.0));
+        arvoreBinaria.adicionar(new Produto(1, "maca", 10.0));
+        arvoreBinaria.adicionar(new Produto(6, "pepino", 10.0));
+        arvoreBinaria.adicionar(new Produto(5, "mamao", 10.0));
+        arvoreBinaria.adicionar(new Produto(7, "melao", 10.0));
+
+        System.out.println(arvoreBinaria.caminharEmNivel());
         Scanner scanner = new Scanner(System.in);
         
         while (true) {
