@@ -30,4 +30,18 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         
     }
 
+    private No<T> rotacaoDireita(No<T> noAtual) {
+        No<T> filhoEsquerda = noAtual.getFilhoEsquerda();
+        No<T> direitaFilhoEsquerda = filhoEsquerda.getFilhoDireita();
+
+        filhoEsquerda.setFilhoDireita(noAtual);
+        noAtual.setFilhoEsquerda(direitaFilhoEsquerda);
+
+        this.atualizaAltura(noAtual);
+        this.atualizaAltura(filhoEsquerda);
+        
+
+        return filhoEsquerda;
+    }
+
 }
