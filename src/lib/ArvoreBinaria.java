@@ -181,7 +181,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
         // Percorre por cada nivel até a altura (nivel maximo)
         for (int nivel = 0; nivel <= altura; nivel++) {
-            output += imprimeNivel(raiz, nivel);
+            output += imprimeNivel(raiz, nivel) + "\n";
         }
 
         return output;
