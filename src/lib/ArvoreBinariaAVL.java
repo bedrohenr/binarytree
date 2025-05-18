@@ -2,12 +2,12 @@ package lib;
 
 import java.util.Comparator;
 
-public class ArvoreAVLExemplo <T> extends ArvoreBinaria<T>{
+public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
 
-    public ArvoreAVLExemplo(Comparator<T> comparator) {
+    public ArvoreBinariaAVL(Comparator<T> comparator) {
         super(comparator);
     }
     
     //Implementar métodos para efetuar o balanceamento e sobrescrever método de adicionar elemento...
-
+  
 }
