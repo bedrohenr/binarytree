@@ -35,5 +35,9 @@ public class MainTesteAVL {
         System.out.println();
         System.out.println("Árvore binária em nível:\n" + ab.caminharEmNivel());
         System.out.println("Árvore binária AVL em nível:\n" + abAVL.caminharEmNivel());
+
+        abAVL.remover(new Produto(7, "", 0));
+        System.out.println("Árvore binária AVL em ordem após remover:\n" + abAVL.caminharEmOrdem());
+        System.out.println("Árvore binária AVL em nível após remover:\n" + abAVL.caminharEmNivel());
     }
 }
