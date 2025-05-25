@@ -71,6 +71,15 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         return noAtual;
     }
 
+    private No<T> noValorMinimo(No<T> noAtual){
+        No<T> menor = noAtual;
+        while(noAtual.getFilhoEsquerda() != null){
+            menor = menor.getFilhoEsquerda();
+        }
+
+        return menor;
+    }
+
     private int getAltura(No<T> no) {
         if(no == null) {
             return 0;
