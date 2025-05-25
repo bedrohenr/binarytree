@@ -59,11 +59,11 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         if (balanceamento < -1 && compare > 0) {
             return this.rotacaoEsquerda(noAtual);
         }
-        if (balanceamento > 1 && compare > 0) {
+        if (balanceamento > 1 && compare >= 0) {
             noAtual.setFilhoEsquerda(rotacaoEsquerda(noAtual.getFilhoEsquerda()));
             return this.rotacaoDireita(noAtual);
         }
-        if (balanceamento < -1 && compare < 0) {
+        if (balanceamento < -1 && compare <= 0) {
             noAtual.setFilhoDireita(rotacaoDireita(noAtual.getFilhoDireita()));
             return this.rotacaoEsquerda(noAtual);
         }
