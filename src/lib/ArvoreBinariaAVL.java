@@ -48,6 +48,42 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         return noAtual;
     }
 
+    public No<T> removerRecursivo(No<T> noAtual, T valor){
+        if(noAtual == null)
+            return null;
+        
+        int compare = this.comparador.compare(noAtual.getValor(), valor);
+
+        
+        if( compare < 0) {
+            noAtual.setFilhoEsquerda(removerRecursivo(noAtual.getFilhoEsquerda(), valor));
+        } else if ( compare > 0) {
+            noAtual.setFilhoDireita(removerRecursivo(noAtual.getFilhoDireita(), valor));
+        } else {
+            // Nó com um filho
+            if(noAtual.getFilhoEsquerda() == null)
+                return noAtual.getFilhoDireita();
+            else if(noAtual.getFilhoDireita() == null)
+                return noAtual.getFilhoEsquerda();
+
+            // Nó com dois filhos
+            No<T> temp = noValorMinimo(noAtual.getFilhoDireita());
+            noAtual.setValor(temp.getValor());
+
+            noAtual.setFilhoDireita(removerRecursivo(noAtual.getFilhoDireita(), temp.getValor()));
+
+
+        }
+
+        // Atualiza altura e faz balanceamento
+        if(noAtual != null){
+            atualizaAltura(noAtual);
+            return rotacoes(noAtual, compare);
+        }
+
+        return noAtual;
+    }
+
     public No<T> rotacoes(No<T> noAtual, int compare) {
         // Verifica o balanceamento do nó atual
         int balanceamento = this.calcularBalanceamento(noAtual);
