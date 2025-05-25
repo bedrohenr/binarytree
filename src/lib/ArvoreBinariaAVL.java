@@ -18,6 +18,12 @@ public class ArvoreBinariaAVL<T> extends ArvoreBinaria<T>{
         this.raiz = this.addRecursivo(this.raiz, novoValor);
     }
 
+    @Override
+    public T remover(T valor){
+        this.raiz = this.removerRecursivo(this.raiz, valor);
+        return valor;
+    }
+
     private No<T> addRecursivo(No<T> noAtual, T valor){
 
         if(noAtual == null){
